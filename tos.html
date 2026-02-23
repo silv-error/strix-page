@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service — Strix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blurple: "#5865F2",
+              "blurple-dark": "#4752C4",
+              surface: "#111318",
+              border: "#1E2130",
+              muted: "#9CA3AF",
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #0d0e13;
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(88, 101, 242, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(88, 101, 242, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .prose-body {
+        color: #9ca3af;
+        font-size: 0.9375rem;
+        line-height: 1.8;
+      }
+      .prose-body a {
+        color: #818cf8;
+        text-decoration: none;
+      }
+      .prose-body a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-white antialiased">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0D0E13]/80">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a
+          href="index.html"
+          class="flex items-center gap-2.5 font-mono font-semibold text-white text-[15px] no-underline"
+        >
+          <div class="w-8 h-8 rounded-lg bg-blurple flex items-center justify-center flex-shrink-0">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          Strix
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a
+            href="index.html#features"
+            class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Features</a
+          >
+          <a
+            href="index.html#commands"
+            class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Commands</a
+          >
+          <a href="tos.html" class="text-sm font-medium text-white no-underline">Terms</a>
+          <a href="privacy.html" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Privacy</a
+          >
+        </div>
+        <a href="index.html" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+          >← Back to Home</a
+        >
+      </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="grid-bg pt-32 pb-14 px-6 border-b border-border">
+      <div class="max-w-3xl mx-auto">
+        <p class="font-mono text-xs text-blurple tracking-[0.2em] uppercase mb-3">Legal</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">Terms of Service</h1>
+        <p class="text-muted text-sm">
+          Last updated: <span class="text-white font-medium">June 2025</span> · Effective immediately upon use of Strix.
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 py-16">
+      <!-- TOC -->
+      <div class="bg-surface border border-border rounded-2xl p-7 mb-14">
+        <p class="font-mono text-xs text-muted uppercase tracking-widest mb-4">Table of Contents</p>
+        <ol class="flex flex-col gap-2.5 list-decimal list-inside">
+          <li>
+            <a href="#s1" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Acceptance of Terms</a
+            >
+          </li>
+          <li>
+            <a href="#s2" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Description of Service</a
+            >
+          </li>
+          <li>
+            <a href="#s3" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Eligibility</a
+            >
+          </li>
+          <li>
+            <a href="#s4" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Acceptable Use</a
+            >
+          </li>
+          <li>
+            <a href="#s5" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Data &amp; Permissions</a
+            >
+          </li>
+          <li>
+            <a href="#s6" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Availability &amp; Modifications</a
+            >
+          </li>
+          <li>
+            <a href="#s7" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Limitation of Liability</a
+            >
+          </li>
+          <li>
+            <a href="#s8" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Termination</a
+            >
+          </li>
+          <li>
+            <a href="#s9" class="text-indigo-300 hover:text-white text-sm font-medium transition-colors no-underline"
+              >Contact</a
+            >
+          </li>
+        </ol>
+      </div>
+
+      <!-- Notice -->
+      <div class="flex gap-4 bg-blurple/8 border border-blurple/25 rounded-xl p-5 mb-14">
+        <svg
+          class="w-5 h-5 text-indigo-400 flex-shrink-0 mt-0.5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <p class="text-sm text-indigo-200 leading-relaxed">
+          By adding Strix to your Discord server or using any of its features, you agree to these Terms of Service. If
+          you do not agree, please remove the bot from your server.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-12">
+        <section id="s1">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >01</span
+            >
+            <h2 class="text-xl font-bold">Acceptance of Terms</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>
+              These Terms of Service ("Terms") govern your access to and use of Strix (the "Bot"), a Discord bot
+              service. By inviting or using the Bot in any Discord server, you ("User" or "Server Administrator") agree
+              to these Terms on behalf of yourself and your server members.
+            </p>
+            <p>
+              These Terms apply to all users, including server administrators who configure the Bot and members of
+              servers where the Bot is active.
+            </p>
+          </div>
+        </section>
+
+        <section id="s2">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >02</span
+            >
+            <h2 class="text-xl font-bold">Description of Service</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>
+              Strix is a Discord bot designed to help server administrators manage member verification. The Bot
+              provides:
+            </p>
+            <ul class="flex flex-col gap-2 pl-5 list-disc">
+              <li>Automatic tracking of unverified members upon joining a server</li>
+              <li>
+                Configurable verification role name and kick timer via
+                <code class="font-mono text-xs bg-blurple/10 text-indigo-300 px-1.5 py-0.5 rounded">/setup</code>
+              </li>
+              <li>
+                Real-time tracking of unverified members and time remaining via
+                <code class="font-mono text-xs bg-blurple/10 text-indigo-300 px-1.5 py-0.5 rounded">/status</code>
+              </li>
+              <li>
+                Dedicated log channel for kick events via
+                <code class="font-mono text-xs bg-blurple/10 text-indigo-300 px-1.5 py-0.5 rounded"
+                  >/setlogchannel</code
+                >
+              </li>
+              <li>
+                Optional DM warnings to unverified members via
+                <code class="font-mono text-xs bg-blurple/10 text-indigo-300 px-1.5 py-0.5 rounded">/toggledm</code>
+              </li>
+              <li>
+                Built-in help reference via
+                <code class="font-mono text-xs bg-blurple/10 text-indigo-300 px-1.5 py-0.5 rounded">/help</code>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="s3">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >03</span
+            >
+            <h2 class="text-xl font-bold">Eligibility</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>To use Strix, you must:</p>
+            <ul class="flex flex-col gap-2 pl-5 list-disc">
+              <li>Have a valid Discord account in good standing</li>
+              <li>
+                Comply with <a href="https://discord.com/terms" target="_blank">Discord's Terms of Service</a> and
+                Community Guidelines
+              </li>
+              <li>Be a server administrator or have sufficient permissions to invite and configure bots</li>
+              <li>Be of legal age in your jurisdiction to agree to these Terms</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="s4">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >04</span
+            >
+            <h2 class="text-xl font-bold">Acceptable Use</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>You agree to use Strix only for its intended purpose. You must not:</p>
+            <ul class="flex flex-col gap-2 pl-5 list-disc">
+              <li>Use the Bot to harass, target, or discriminate against individuals or groups</li>
+              <li>Attempt to exploit, abuse, or reverse-engineer the Bot</li>
+              <li>Use the Bot in any manner that violates Discord's Terms of Service</li>
+              <li>Configure the Bot in a way intended to cause harm to server members</li>
+              <li>Attempt to interfere with or disrupt the Bot's hosting infrastructure</li>
+            </ul>
+            <p>
+              We reserve the right to block any server or user from using the Bot if we determine these Terms are being
+              violated.
+            </p>
+          </div>
+        </section>
+
+        <section id="s5">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >05</span
+            >
+            <h2 class="text-xl font-bold">Data &amp; Permissions</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>Strix requests only the permissions necessary to function:</p>
+            <ul class="flex flex-col gap-2 pl-5 list-disc">
+              <li>View server members and their roles</li>
+              <li>Kick members (only those unverified past the configured timeout)</li>
+              <li>Send messages to the designated log channel</li>
+              <li>Read slash command interactions</li>
+            </ul>
+            <div class="flex gap-3 bg-blurple/8 border border-blurple/20 rounded-xl p-4 mt-2">
+              <svg
+                class="w-4 h-4 text-indigo-400 flex-shrink-0 mt-0.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <p class="text-sm text-indigo-200 leading-relaxed m-0">
+                Strix will never read message content, access private channels, or store personal data beyond what is
+                required for its core functionality. See our
+                <a href="privacy.html" class="text-indigo-300">Privacy Policy</a> for full details.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="s6">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >06</span
+            >
+            <h2 class="text-xl font-bold">Availability &amp; Modifications</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>
+              We strive to keep Strix available at all times via Google Cloud hosting. However, we do not guarantee
+              uninterrupted availability and are not liable for downtime caused by maintenance, infrastructure issues,
+              or Discord API outages.
+            </p>
+            <p>
+              We reserve the right to modify, suspend, or discontinue the Bot at any time. We may also update these
+              Terms — continued use after changes constitutes acceptance.
+            </p>
+          </div>
+        </section>
+
+        <section id="s7">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >07</span
+            >
+            <h2 class="text-xl font-bold">Limitation of Liability</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>Strix is provided "as is" without warranty of any kind. We are not responsible for:</p>
+            <ul class="flex flex-col gap-2 pl-5 list-disc">
+              <li>Members incorrectly kicked due to misconfiguration by server administrators</li>
+              <li>Loss of server members resulting from Bot actions</li>
+              <li>Any indirect, incidental, or consequential damages arising from use of the Bot</li>
+              <li>Actions taken by server administrators using the Bot's features</li>
+            </ul>
+            <p>Server administrators are solely responsible for configuring the Bot appropriately.</p>
+          </div>
+        </section>
+
+        <section id="s8">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >08</span
+            >
+            <h2 class="text-xl font-bold">Termination</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>
+              You may stop using the Bot at any time by removing it from your Discord server. Upon removal, the Bot will
+              cease all actions in your server. Stored configuration data may be retained for a period before being
+              permanently deleted.
+            </p>
+            <p>
+              We may terminate or restrict your access to the Bot at any time, with or without notice, if we believe you
+              have violated these Terms.
+            </p>
+          </div>
+        </section>
+
+        <section id="s9">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-border">
+            <span
+              class="font-mono text-xs font-semibold text-blurple bg-blurple/10 border border-blurple/20 px-2.5 py-1 rounded-md"
+              >09</span
+            >
+            <h2 class="text-xl font-bold">Contact</h2>
+          </div>
+          <div class="prose-body flex flex-col gap-3">
+            <p>
+              If you have questions about these Terms of Service, please reach out via the Bot's official Discord
+              support server or by submitting a GitHub issue on the project repository.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border py-12 px-6 mt-6">
+      <div class="max-w-3xl mx-auto flex flex-col items-center gap-5">
+        <div class="flex items-center gap-2.5 font-mono font-semibold text-white text-sm">
+          <div class="w-7 h-7 rounded-lg bg-blurple flex items-center justify-center">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          Strix
+        </div>
+        <div class="flex items-center gap-8 flex-wrap justify-center">
+          <a href="index.html" class="text-sm text-muted hover:text-white transition-colors no-underline">Home</a>
+          <a href="tos.html" class="text-sm text-white font-medium no-underline">Terms of Service</a>
+          <a href="privacy.html" class="text-sm text-muted hover:text-white transition-colors no-underline"
+            >Privacy Policy</a
+          >
+        </div>
+        <p class="text-xs text-muted/50">© 2025 Strix · All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

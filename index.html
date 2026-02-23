@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strix — Discord Verification Bot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              blurple: "#5865F2",
+              "blurple-dark": "#4752C4",
+              surface: "#111318",
+              border: "#1E2130",
+              muted: "#9CA3AF",
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #0d0e13;
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(88, 101, 242, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(88, 101, 242, 0.05) 1px, transparent 1px);
+        background-size: 48px 48px;
+      }
+      .glow {
+        background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(88, 101, 242, 0.2) 0%, transparent 70%);
+      }
+      .card-hover {
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-3px);
+        border-color: rgba(88, 101, 242, 0.4);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.6s ease forwards;
+      }
+      .d1 {
+        animation-delay: 0.1s;
+        opacity: 0;
+      }
+      .d2 {
+        animation-delay: 0.22s;
+        opacity: 0;
+      }
+      .d3 {
+        animation-delay: 0.36s;
+        opacity: 0;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+      .blink {
+        animation: blink 2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-white antialiased overflow-x-hidden">
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 backdrop-blur-xl bg-[#0D0E13]/80">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a
+          href="index.html"
+          class="flex items-center gap-2.5 font-mono font-semibold text-white text-[15px] no-underline"
+        >
+          <!-- Shield Logo SVG -->
+          <div class="w-8 h-8 rounded-lg bg-blurple flex items-center justify-center flex-shrink-0">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          Strix
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#features" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Features</a
+          >
+          <a href="#commands" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Commands</a
+          >
+          <a href="tos.html" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Terms</a
+          >
+          <a href="privacy.html" class="text-sm font-medium text-muted hover:text-white transition-colors no-underline"
+            >Privacy</a
+          >
+        </div>
+        <a
+          href="#"
+          class="flex items-center gap-2 bg-blurple hover:bg-blurple-dark text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors no-underline"
+        >
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"
+            />
+          </svg>
+          Add to Server
+        </a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative min-h-screen flex items-center justify-center pt-16 grid-bg">
+      <div class="glow absolute inset-0 pointer-events-none"></div>
+      <div class="relative z-10 max-w-3xl mx-auto px-6 py-28 text-center">
+        <div
+          class="fade-up inline-flex items-center gap-2 bg-blurple/10 border border-blurple/25 text-indigo-300 font-mono text-xs px-4 py-2 rounded-full mb-8"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-green-400 blink"></span>
+          ONLINE · HOSTED ON GOOGLE CLOUD
+        </div>
+
+        <h1 class="fade-up d1 text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.08] mb-6">
+          Keep your server<br />
+          <span class="text-blurple">verified</span> &amp; safe.
+        </h1>
+
+        <p class="fade-up d2 text-lg text-muted leading-relaxed max-w-xl mx-auto mb-10">
+          Strix automatically tracks unverified members and kicks them after a configurable timer — keeping your
+          community clean without any manual effort.
+        </p>
+
+        <div class="fade-up d3 flex items-center justify-center gap-3 flex-wrap">
+          <a
+            href="https://discord.com/oauth2/authorize?client_id=1472046745113460736&permissions=2415921154&integration_type=0&scope=bot+applications.commands"
+            class="flex items-center gap-2 bg-blurple hover:bg-blurple-dark text-white font-semibold text-sm px-6 py-3 rounded-xl transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(88,101,242,0.45)] no-underline"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"
+              />
+            </svg>
+            Add to Discord
+          </a>
+          <a
+            href="#features"
+            class="text-sm font-semibold text-muted hover:text-white border border-border hover:border-white/20 px-6 py-3 rounded-xl transition-all no-underline"
+          >
+            Learn more ↓
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="max-w-5xl mx-auto px-6 pb-24">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-surface border border-border rounded-2xl p-6 text-center">
+          <div class="font-mono text-4xl font-bold text-white mb-1">100%</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-muted">Automated</div>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6 text-center">
+          <div class="font-mono text-4xl font-bold text-white mb-1">&lt;1s</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-muted">Detection</div>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6 text-center">
+          <div class="font-mono text-4xl font-bold text-white mb-1">24/7</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-muted">Uptime</div>
+        </div>
+        <div class="bg-surface border border-border rounded-2xl p-6 text-center">
+          <div class="font-mono text-4xl font-bold text-white mb-1">∞</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-muted">Servers</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="max-w-5xl mx-auto px-6 pb-28">
+      <div class="text-center mb-14">
+        <p class="font-mono text-xs text-blurple tracking-[0.2em] uppercase mb-3">Features</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Everything you need.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Timer -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">Configurable Timer</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Set exactly how long unverified members have before being kicked. Fully adjustable per server.
+          </p>
+        </div>
+
+        <!-- Logs -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">Log Channel</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Every join, warning, and kick is logged to your chosen channel with timestamps and context.
+          </p>
+        </div>
+
+        <!-- Slash Commands -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">Slash Commands</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Configure everything in Discord using clean slash commands. No external dashboards needed.
+          </p>
+        </div>
+
+        <!-- Auto-Tracking -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">Auto-Tracking</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Automatically watches every new member from the moment they join. Zero manual work.
+          </p>
+        </div>
+
+        <!-- DM Warnings -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">DM Warnings</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Optionally notify unverified members by DM before they get kicked — giving them a fair heads-up.
+          </p>
+        </div>
+
+        <!-- Cloud Hosted -->
+        <div class="bg-surface border border-border rounded-2xl p-7 card-hover">
+          <div
+            class="w-11 h-11 rounded-xl bg-blurple/10 border border-blurple/20 flex items-center justify-center mb-5"
+          >
+            <svg
+              class="w-5 h-5 text-indigo-400"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <h3 class="text-base font-bold mb-2">Cloud Hosted</h3>
+          <p class="text-sm text-muted leading-relaxed">
+            Runs on Google Cloud — always on, always fast. No self-hosting or maintenance required.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMANDS -->
+    <section id="commands" class="max-w-3xl mx-auto px-6 pb-28">
+      <div class="text-center mb-14">
+        <p class="font-mono text-xs text-blurple tracking-[0.2em] uppercase mb-3">Slash Commands</p>
+        <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">Simple to set up.</h2>
+      </div>
+
+      <div class="bg-surface border border-border rounded-2xl overflow-hidden divide-y divide-border">
+        <div class="flex items-start gap-5 p-6">
+          <span
+            class="font-mono text-sm font-semibold text-indigo-300 bg-blurple/10 border border-blurple/20 px-3 py-1.5 rounded-lg whitespace-nowrap"
+            >/setup</span
+          >
+          <div>
+            <p class="text-sm font-semibold text-white mb-1">Configure the bot</p>
+            <p class="text-sm text-muted leading-relaxed">
+              Set the verification role name and kick timer. Run this first after adding Strix.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-5 p-6">
+          <span
+            class="font-mono text-sm font-semibold text-indigo-300 bg-blurple/10 border border-blurple/20 px-3 py-1.5 rounded-lg whitespace-nowrap"
+            >/status</span
+          >
+          <div>
+            <p class="text-sm font-semibold text-white mb-1">View tracked members</p>
+            <p class="text-sm text-muted leading-relaxed">
+              See all unverified members currently being tracked and their remaining time before kick.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-5 p-6">
+          <span
+            class="font-mono text-sm font-semibold text-indigo-300 bg-blurple/10 border border-blurple/20 px-3 py-1.5 rounded-lg whitespace-nowrap"
+            >/setlogchannel</span
+          >
+          <div>
+            <p class="text-sm font-semibold text-white mb-1">Set log channel</p>
+            <p class="text-sm text-muted leading-relaxed">
+              Choose which channel receives all kick logs and verification event entries.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-5 p-6">
+          <span
+            class="font-mono text-sm font-semibold text-indigo-300 bg-blurple/10 border border-blurple/20 px-3 py-1.5 rounded-lg whitespace-nowrap"
+            >/toggledm</span
+          >
+          <div>
+            <p class="text-sm font-semibold text-white mb-1">Toggle DM warnings</p>
+            <p class="text-sm text-muted leading-relaxed">
+              Enable or disable DM warnings sent to unverified members before they are kicked.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-5 p-6">
+          <span
+            class="font-mono text-sm font-semibold text-indigo-300 bg-blurple/10 border border-blurple/20 px-3 py-1.5 rounded-lg whitespace-nowrap"
+            >/help</span
+          >
+          <div>
+            <p class="text-sm font-semibold text-white mb-1">Show help</p>
+            <p class="text-sm text-muted leading-relaxed">
+              Display all available commands and a quick-start guide directly inside Discord.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-border py-12 px-6">
+      <div class="max-w-5xl mx-auto flex flex-col items-center gap-6">
+        <div class="flex items-center gap-2.5 font-mono font-semibold text-white text-sm">
+          <div class="w-7 h-7 rounded-lg bg-blurple flex items-center justify-center">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="white"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <polyline points="9 12 11 14 15 10" />
+            </svg>
+          </div>
+          Strix
+        </div>
+        <div class="flex items-center gap-8 flex-wrap justify-center">
+          <a href="tos.html" class="text-sm text-muted hover:text-white transition-colors no-underline"
+            >Terms of Service</a
+          >
+          <a href="privacy.html" class="text-sm text-muted hover:text-white transition-colors no-underline"
+            >Privacy Policy</a
+          >
+          <a
+            href="https://discord.com/oauth2/authorize?client_id=1472046745113460736&permissions=2415921154&integration_type=0&scope=bot+applications.commands"
+            class="text-sm text-muted hover:text-white transition-colors no-underline"
+            >Add to Discord</a
+          >
+        </div>
+        <p class="text-xs text-muted/50">© 2025 Strix · Hosted on Google Cloud</p>
+      </div>
+    </footer>
+  </body>
+</html>
